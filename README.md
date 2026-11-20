@@ -1,5 +1,9 @@
 # CodeAlpha Task 3 — DineHub (Restaurant Management System)
 
+**Live Application (Vercel):** <https://ca-dinehub.vercel.app>  
+**Backend API (Cloudflare Workers + D1):** <https://codealpha-dinehub.singhgurjotpal84.workers.dev>  
+**GitHub Repository:** <https://github.com/SinghGurjot01-Code/CodeAlpha_RestaurantManagement>
+
 A full-stack **Restaurant Management System** built for the **CodeAlpha Backend Development Internship — Task 3**.  
 DineHub connects the complete customer and admin restaurant frontend (`DineHub – Restaurant Management.html`) to a modular **Node.js + Express.js 5** backend running on **Cloudflare Workers** (`nodejs_compat` + `httpServerHandler`) with **Cloudflare D1** (SQLite-compatible relational database).
 
@@ -230,12 +234,15 @@ Configured in [`backend/wrangler.jsonc`](backend/wrangler.jsonc) and [`backend/.
 
 ## 11. Deployment Instructions (Vercel + Cloudflare Workers & D1)
 
+- **Vercel (`https://ca-dinehub.vercel.app`)** hosts the frontend static assets and proxies `/api/:path*` via [`frontend/vercel.json`](frontend/vercel.json) directly to the Cloudflare Worker (`https://codealpha-dinehub.singhgurjotpal84.workers.dev/api/:path*`).
+- **Cloudflare Workers + D1 (`https://codealpha-dinehub.singhgurjotpal84.workers.dev`)** runs the Express 5 API and persists data in the remote D1 database `codealpha-dinehub-db` (`0f31c380-1ba8-4e35-a6ca-c7b1c08ac3ad`).
+
 ```bash
 # 1. Create and migrate the remote Cloudflare D1 database
 cd backend
 npx wrangler login
 npx wrangler d1 create codealpha-dinehub-db
-# Set the returned database_id in backend/wrangler.jsonc -> d1_databases[0].database_id
+# Ensure database_id is set in backend/wrangler.jsonc -> d1_databases[0].database_id
 npm run db:migrate:remote
 
 # 2. Set the production JWT secret and deploy the Express Worker
@@ -244,7 +251,7 @@ npm run deploy
 
 # 3. Deploy the frontend to Vercel
 cd ../frontend
-vercel deploy --prod
+vercel deploy --prod --name ca-dinehub
 ```
 
 ---

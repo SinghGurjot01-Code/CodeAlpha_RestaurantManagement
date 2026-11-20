@@ -1,6 +1,7 @@
 // Runtime frontend configuration for DineHub.
-// Leave API_BASE_URL empty when served from the same origin (e.g. local `wrangler dev`, or Vercel proxy rewrites).
-// When the frontend is hosted separately without a reverse-proxy rewrite, set it to the Cloudflare Workers backend URL.
+// Leave API_BASE_URL empty when served from the same origin (e.g. local `wrangler dev`, or Vercel proxy at ca-dinehub.vercel.app).
+// When the frontend is hosted separately without a reverse-proxy rewrite, set it to the Cloudflare Workers backend URL,
+// e.g. "https://codealpha-dinehub.singhgurjotpal84.workers.dev" (no trailing slash).
 window.APP_CONFIG = {
   API_BASE_URL: ''
 };

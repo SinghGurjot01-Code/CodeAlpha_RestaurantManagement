@@ -13,14 +13,14 @@
     {
       "binding": "DB",
       "database_name": "codealpha-dinehub-db",
-      // Placeholder ID for local D1 (--local). Replace with real database_id after `wrangler d1 create`.
-      "database_id": "00000000-0000-0000-0000-000000000000",
+      // Real D1 database ID (an identifier, not a secret). Local dev (--local) uses .wrangler/.
+      "database_id": "0f31c380-1ba8-4e35-a6ca-c7b1c08ac3ad",
       "migrations_dir": "migrations"
     }
   ],
 
   "vars": {
-    "CORS_ORIGIN": "",
+    "CORS_ORIGIN": "https://ca-dinehub.vercel.app",
     "SESSION_TTL_HOURS": "168",
     "DEFAULT_TAX_PERCENT": "5"
   },
