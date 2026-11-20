@@ -1,0 +1,29 @@
+{
+  // Express 5 on Cloudflare Workers + D1 for CodeAlpha Task 3 (DineHub Restaurant Management).
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "codealpha-dinehub",
+  "main": "src/worker.mjs",
+  "compatibility_date": "2026-10-01",
+  "compatibility_flags": ["nodejs_compat", "enable_nodejs_http_server_modules"],
+
+  // Serve ../frontend as static assets; /api/* routes fall through to the Express Worker.
+  "assets": { "directory": "../frontend" },
+
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "codealpha-dinehub-db",
+      // Placeholder ID for local D1 (--local). Replace with real database_id after `wrangler d1 create`.
+      "database_id": "00000000-0000-0000-0000-000000000000",
+      "migrations_dir": "migrations"
+    }
+  ],
+
+  "vars": {
+    "CORS_ORIGIN": "",
+    "SESSION_TTL_HOURS": "168",
+    "DEFAULT_TAX_PERCENT": "5"
+  },
+
+  "observability": { "enabled": true }
+}

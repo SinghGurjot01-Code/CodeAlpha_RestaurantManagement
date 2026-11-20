@@ -1,0 +1,7 @@
+# Copy to .dev.vars (git-ignored) for local development overrides.
+# In production, set JWT_SECRET via `npx wrangler secret put JWT_SECRET`.
+
+JWT_SECRET=dinehub-local-dev-secret-change-in-production-min-32-chars
+# CORS_ORIGIN=http://localhost:8787
+# SESSION_TTL_HOURS=168
+# DEFAULT_TAX_PERCENT=5
